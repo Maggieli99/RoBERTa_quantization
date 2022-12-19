@@ -20,10 +20,11 @@ The repo contains the source code of integer quantization of Roberta, how we fin
 - `fairseq_cli` include source code of train the model in `train.py`. 
 - `scripts` Helper script cloned from Fairseq repository.
 - `download_glue_data.py` scripts to download glue datasets.
-- `ibert_experiment.ipynb` notebook to conduct experiments on Roberta base and quantized models..
+- `ibert_experiment.ipynb` notebook to conduct experiments on Roberta base and quantized models.
 - `plot.ipynb` notebook to visualize the results. 
-- `run.py` scripts to fine-tuning and train Roberta quantized model
-- `setup.py` install required libraries for experiments
+- `run.py` scripts to fine-tuning and train Roberta quantized model.
+- `setup.py` install required libraries for experiments.
+- `6998_final_presentation.pdf` is the slides used for presentation.
 
 
 ## Commands to execute the code
