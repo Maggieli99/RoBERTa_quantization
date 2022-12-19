@@ -13,7 +13,55 @@ In this project, we take RoBERTa as the model for experiments, explore a variety
 
 ## Repository Description
 
+The repo contains the source code of integer quantization of Roberta, how we fine-tuning Roberta base and quantized Roberta as well as how to conduct experiments and vislization of results. 
+
+- `examples` cloned from Fairseq developed by Meta. Include how to run different Models include Roberta and how to preprocess GLUE dataset on Roberta. 
+- `fairseq` includes soure of Roberta Architecture. Quantization of different layers are included in `quantization/utils`. 
+- `fairseq_cli` include source code of train the model in `train.py`. 
+- `scripts` Helper script cloned from Fairseq repository.
+- `download_glue_data.py` scripts to download glue datasets.
+- `ibert_experiment.ipynb` notebook to conduct experiments on Roberta base and quantized models..
+- `plot.ipynb` notebook to visualize the results. 
+- `run.py` scripts to fine-tuning and train Roberta quantized model
+- `setup.py` install required libraries for experiments
+
+
 ## Commands to execute the code
+
+To download pretained Roberta model, please run 
+```bash
+wget https://dl.fbaipublicfiles.com/fairseq/models/roberta.base.tar.gz
+tar -xvf roberta.base.tar.gz
+```
+
+To download GLUE datasets, please run 
+```bash
+git clone https://github.com/nyu-mll/GLUE-baselines.git
+python GLUE-baselines/download_glue_data.py --data_dir glue_data --tasks all
+```
+
+To fine-tuning Roberta 
+First we need to preprocess GLUE on specific tasks, please run
+```bash
+bash ./examples/roberta/preprocess_GLUE_tasks.sh glue_data CoLA
+```
+Then fine-tuning Roberta base model by running:
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python run.py --arch roberta_base --task CoLA 
+```   
+
+Then fine-tuning quantized Roberta model by running:
+
+``` bash
+!CUDA_VISIBLE_DEVICES=0 python run.py --arch roberta_base --task CoLA --restore-file checkpoint_best_CoLA.pt --lr 1e-6 --force-dequant none
+
+```
+Arguments could be modified. To change arguement, please check arguements in `run.py`
+More details of examples of conducting experiments can be found in `ibert_experiment.ipynb`.
+    
+
+
 
 ## Results & Observation
 
