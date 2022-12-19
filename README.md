@@ -15,7 +15,7 @@ In this project, we take RoBERTa as the model for experiments, explore a variety
 
 ## Commands to execute the code
 
-## Results and Observation
+## Results & Observation
 
 In the project, we use the uncompressed pre-trained RoBERTa-base model as our baseline, finetune the model based on 4 GLUE tasks. For MNLI, we run 2 experiments, one for unquantized model, the other for fully quantized model (end-to-end quantization for each parameter and layer). For CoLA, SST-2, and RTE, we run 1 baseline and 5 different quantization experiments. We finally try to evaluate the model performance based on test accuracy, training time, and inference time. The solution architecture is as below:
 
@@ -70,9 +70,19 @@ As for inference time, we observe that when quantizing more layers, the inferenc
 
 From the plot, we can discover that end-to-end Quant always needs more training time but have lower accuracy than base. Dequanting all nonlinear layer have less training time but relatively low accuracy. We find dequantizing GELU operation seems to be a good trade-off because it achieves a relatively high accuracy compared to other quantization combinations while having a moderate training time.
 
+### Conclusion & Future Work
 
+As a summary of the above observations:
 
-  
+- When training the tasks with very large dataset (e.g., MNLI, SST-2), quantized RoBERTa can achieve very similar accuracy as compared to the full-precision baseline. For smaller datasets (e.g., CoLA, RTE), the degradation in accuracy is more significant.
+- Quantization-aware training leads to larger training time because it requires multiple forward and backward passes through the network with different quantization levels; in general, larger datasets leads to larger training time difference between quantized and base models
+- Since Pytorch does not support integer operation, the inference times we get have significant bias. So inference on other computing units is needed.
+- Only dequantizing GELU operation (Quantize linear+Softmax+LayerNorm) seems to be a good trade-off. In this case, it achieves a relatively high accuracy compared to other quantization combinations while having a moderate training time.
+
+Future work:
+
+- Pytorch does not support integer operation so in order to deploy integer-quantized model on GPU or CPU and achieve speedup during inference, we need export the integer parameters along with the model architecture to other frameworks that support deployment on integer processing units(TVM and TensorRT).
+- Manually computing model size base is needed to further evaluate efficiency of quantization.
 
 
 
