@@ -134,6 +134,17 @@ Future work:
 - Manually computing model size base is needed to further evaluate efficiency of quantization.
 
 ## References
+[PyTorch](http://pytorch.org/)
 
+[Fairseq](https://github.com/facebookresearch/fairseq)
+
+```
+@article{kim2021bert,
+  title={I-BERT: Integer-only BERT Quantization},
+  author={Kim, Sehoon and Gholami, Amir and Yao, Zhewei and Mahoney, Michael W and Keutzer, Kurt},
+  journal={International Conference on Machine Learning (Accepted)},
+  year={2021}
+}
+```
 
 
