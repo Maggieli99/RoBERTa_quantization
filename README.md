@@ -133,7 +133,7 @@ Future work:
 - Pytorch does not support integer operation so in order to deploy integer-quantized model on GPU or CPU and achieve speedup during inference, we need export the integer parameters along with the model architecture to other frameworks that support deployment on integer processing units(TVM and TensorRT).
 - Manually computing model size base is needed to further evaluate efficiency of quantization.
 
-
+## References
 
 
 
