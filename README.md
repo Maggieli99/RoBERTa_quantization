@@ -1,6 +1,5 @@
 # RoBERTa_quantization
 
-> Final project of COMS 6998 Practical Deep Learning System Performance, Columbia University, 2022 Fall\
 > By Yiquan Li (UNI: yl4886) and Zezhong Fan (UNI: zf2274)
 
 ## Project Description
