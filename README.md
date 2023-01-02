@@ -1,6 +1,6 @@
 # RoBERTa_quantization
 
-> By Yiquan Li (UNI: yl4886) and Zezhong Fan (UNI: zf2274)
+> By Yiquan Li and Zezhong Fan
 
 ## Project Description
 
